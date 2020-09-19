@@ -27,22 +27,28 @@ GUIDE FOR RANDOM PASSWORD GENERATOR
 // Generates a random password with user's number input and password character set
 function generatePassword() {
 
-  var userNumber = getUserNum();
-  var userPassCharSet = getUserPassChar();
+  // var userNumber = getUserNum();
+  // var userPassCharSet = userPassChar;
+  // getUserPassChar();
 
   var randomPass = "";
   
   // for loop that randomizes and generates user's inputs
-  for(var i = 0; i < userNumber; i++) {
-    var j = Math.floor(Math.random()*userPassCharSet.length);
-    randomPass += userPassCharSet.charAt(j);
-    console.log (randomPass); 
-  }
-  return randomPass;
-}
+  // for(var i = 0; i < userNumber; i++) {
+  //   var j = Math.floor(Math.random()*userPassCharSet.length);
+  //   randomPass += userPassCharSet.charAt(j);
+  //   console.log (randomPass); 
+  // }
+  // return randomPass;
+
+
+
+
+
+// }
 
 // Obtain the user's selected number of characters
-function getUserNum() {
+// function getUserNum() {
   var userNum;
   var invalidNumber = true;
   
@@ -65,13 +71,13 @@ function getUserNum() {
       invalidNumber = false;     
     }
   }
-    return userNum;
-}
+//     return userNum;
+// }
 
 // Obtain the user's selected types of characters
-function getUserPassChar() {
+// function getUserPassChar() {
   var userPassChar = "";
-  var validChar = true;
+  // var validChar = true;
 
   var upperStr = "";
   var lowerStr = "";
@@ -79,16 +85,15 @@ function getUserPassChar() {
   var symbolStr = "";
    
   // loops series of questions until user select's at least one character type
-  do {
-    var confirmCharUpper = confirm("Would you like to include upper case letters? Click OK to confirm.");
-    var confirmCharLower = confirm("Would you like to include lower case letters? Click OK to confirm.");
-    var confirmCharNums = confirm("Would you like to include numbers? Click OK to confirm.");
-    var confirmCharSym = confirm("Would you like to include symbols? Click OK to confirm.");
+  // do {
+  var confirmCharUpper = confirm("Would you like to include upper case letters? Click OK to confirm.");
+  var confirmCharLower = confirm("Would you like to include lower case letters? Click OK to confirm.");
+  var confirmCharNums = confirm("Would you like to include numbers? Click OK to confirm.");
+  var confirmCharSym = confirm("Would you like to include symbols? Click OK to confirm.");
 
-    if (confirmCharUpper) {
+  if (confirmCharUpper) {
       userPassChar += randomPassChar.upper;
       upperStr += randomPassChar.upper;
-      console.log(upperStr);
     }   
     if (confirmCharLower) {
       userPassChar += randomPassChar.lower;
@@ -107,12 +112,37 @@ function getUserPassChar() {
 
     if (confirmCharUpper === false && confirmCharLower === false && confirmCharNums === false && confirmCharSym === false) {
       alert("Must select at least one character type!");
-      validChar = false;
-    } else {
-      validChar = true;
-    } 
-  } while (!validChar);
-      return userPassChar;
+      // validChar = false;
+    }
+//     } else {
+//       validChar = true;
+//     // } 
+//   // } while (!validChar);
+//       // return userPassChar;
+// }
+var oneCharacterEach= ""
+
+  for(var l = 0; l < 1; l++) {
+  var oneUpper = Math.floor(Math.random()*upperStr.length);
+   oneCharacterEach += upperStr.charAt(oneUpper);
+    console.log (oneCharacterEach); 
+}
+  for(var m = 0; m < 1; m++) {
+  var oneLower = Math.floor(Math.random()*lowerStr.length);
+   oneCharacterEach += lowerStr.charAt(oneLower);
+    console.log (oneCharacterEach); 
+}
+  for(var n = 0; n < 1; n++) {
+  var oneNumber = Math.floor(Math.random()*numberStr.length);
+   oneCharacterEach += numberStr.charAt(oneNumber);
+    console.log (oneCharacterEach); 
+}
+  for(var o = 0; o < 1; o++) {
+  var oneSymbol = Math.floor(Math.random()*symbolStr.length);
+   oneCharacterEach += symbolStr.charAt(oneSymbol);
+    console.log (oneCharacterEach); 
+}
+
 }
 
 // Write password to the #password input
