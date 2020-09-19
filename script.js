@@ -10,20 +10,21 @@ var randomPassChar = {
   symbol: "~!@#$%^&*()-=_+[]\\{}|;':,./\"<>?",
 }
 /*
-1. ask user how many char
+GUIDE FOR RANDOM PASSWORD GENERATOR
+  1. ask user how many characters they want for their password
     - should be 8 to 128
-    - needs to be numerical 
-    - userNum stores user input value
+    - needs to be numerical input value (if not, loop question)
+    - store user's choice in variable
     
-2. ask user what kind of char they want
-     - upper, lower, symbols, numbers
-     - 
-3. generate password with user choices
-    - use for loop to pick userNum number of char from 
+  2. ask user what type of characters they want
+     - upper, lower, symbols, and/or numbers
+     - if none were selected, loop the questions
 
+  3. generate password with user's selection (number of preferred characters and types of characters)
+    - use the for loop to generate the random password with the user's number input variable and the user's selected character types variable
 */ 
 
-// Generates a random password with user's number input
+// Generates a random password with user's number input and password character set
 function generatePassword() {
 
   var userNumber = getUserNum();
@@ -31,7 +32,7 @@ function generatePassword() {
 
   var randomPass = "";
   
-  
+  // for loop that randomizes and generates user's inputs
   for(var i = 0; i < userNumber; i++) {
     var j = Math.floor(Math.random()*userPassCharSet.length);
     randomPass += userPassCharSet.charAt(j);
@@ -40,10 +41,12 @@ function generatePassword() {
   return randomPass;
 }
 
+// Obtain the user's selected number of characters
 function getUserNum() {
   var userNum;
   var invalidNumber = true;
-
+  
+  // loops the series of questions until user input is a valid number between 8 to 128 characters
   while (invalidNumber) {
 
     userNum = prompt("How many characters do you want for your password?");
@@ -65,10 +68,12 @@ function getUserNum() {
     return userNum;
 }
 
+// Obtain the user's selected types of characters
 function getUserPassChar() {
   var userPassChar = "";
   var validChar = true;
    
+  // loops series of questions until user select's at least one character type
   do {
     var confirmCharUpper = confirm("Would you like to include upper case letters? Click OK to confirm.");
     var confirmCharLower = confirm("Would you like to include lower case letters? Click OK to confirm.");
