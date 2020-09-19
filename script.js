@@ -2,7 +2,7 @@
 var generateBtn = document.querySelector("#generate");
 
 
-// Random Password Characters
+// Random Password Character Set
 var randomPassChar = {
   lower: "abcdefghijklmnopqrstuvwxyz",
   upper: "ABCDEFGHIJKLMNOPQRSTUVQXYZ",
@@ -22,21 +22,15 @@ var randomPassChar = {
     - use for loop to pick userNum number of char from 
 
 */ 
+
+// Generates a random password with user's number input
 function generatePassword() {
 
   var userNumber = getUserNum();
   var userPassCharSet = getUserPassChar();
-  
-// this is step 1 in pseudocode
-
-  
-   
- 
-  
-  // write step 2
-  // write step 3
 
   var randomPass = "";
+  
   
   for(var i = 0; i < userNumber; i++) {
     var j = Math.floor(Math.random()*userPassCharSet.length);
@@ -53,10 +47,9 @@ function getUserNum() {
   while (invalidNumber) {
 
     userNum = prompt("How many characters do you want for your password?");
-      // console.log(UserNum);
 
     if (isNaN(userNum) || userNum === null) {
-       alert("Invalid input! Must put a number!");
+      alert("Invalid input! Must put a number!");
       invalidNumber = true;  
     }
 
@@ -69,16 +62,14 @@ function getUserNum() {
       invalidNumber = false;     
     }
   }
-  return userNum;
+    return userNum;
 }
 
 function getUserPassChar() {
-
   var userPassChar = "";
   var validChar = true;
    
   do {
-    
     var confirmCharUpper = confirm("Would you like to include upper case letters? Click OK to confirm.");
     var confirmCharLower = confirm("Would you like to include lower case letters? Click OK to confirm.");
     var confirmCharNums = confirm("Would you like to include numbers? Click OK to confirm.");
@@ -108,7 +99,7 @@ function getUserPassChar() {
       validChar = true;
     } 
   } while (!validChar);
-  return userPassChar;
+      return userPassChar;
 }
 
 // Write password to the #password input
@@ -117,11 +108,6 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
-  
-
-    
-
 }
 
 // Add event listener to generate button
