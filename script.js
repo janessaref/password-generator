@@ -6,7 +6,7 @@ var generateBtn = document.querySelector("#generate");
 var randomPassChar = {
   lower: "abcdefghijklmnopqrstuvwxyz",
   upper: "ABCDEFGHIJKLMNOPQRSTUVQXYZ",
-  nums: "0123456789",
+  nums: "012345678909123456789",
   symbol: "~!@#$%^&*()-=_+[]\\{}|;':,./\"<>?",
 }
 /*
@@ -72,6 +72,11 @@ function getUserNum() {
 function getUserPassChar() {
   var userPassChar = "";
   var validChar = true;
+
+  var upperStr = "";
+  var lowerStr = "";
+  var numberStr = "";
+  var symbolStr = "";
    
   // loops series of questions until user select's at least one character type
   do {
@@ -82,19 +87,22 @@ function getUserPassChar() {
 
     if (confirmCharUpper) {
       userPassChar += randomPassChar.upper;
+      upperStr += randomPassChar.upper;
+      console.log(upperStr);
     }   
     if (confirmCharLower) {
       userPassChar += randomPassChar.lower;
-      console.log(userPassChar);
+      lowerStr += randomPassChar.lower;
+      
     }
     if (confirmCharNums) {
       userPassChar += randomPassChar.nums;
-      console.log(userPassChar);
+      numberStr += randomPassChar.nums;
     }
      
     if (confirmCharSym) {
       userPassChar += randomPassChar.symbol;
-      console.log(userPassChar);
+      symbolStr += randomPassChar.symbol;
     }
 
     if (confirmCharUpper === false && confirmCharLower === false && confirmCharNums === false && confirmCharSym === false) {
