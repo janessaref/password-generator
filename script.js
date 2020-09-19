@@ -85,9 +85,9 @@ function generatePassword() {
   for(var i = 0; i < userNum; i++) {
     var j = Math.floor(Math.random()*userPassChar.length);
     randomPass += userPassChar.charAt(j);
-    // console.log (randomPass);
-    
+    console.log (randomPass); 
   }
+  return randomPass;
 }
 
 var pass = {
@@ -117,7 +117,7 @@ function writePassword() {
 
   passwordText.value = password;
 
-
+  
 
     
 
