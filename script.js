@@ -1,15 +1,13 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-var userNum;
 
 
-
-// Random Password
+// Random Password Characters
 var randomPassChar = {
   lower: "abcdefghijklmnopqrstuvwxyz",
   upper: "ABCDEFGHIJKLMNOPQRSTUVQXYZ",
   nums: "0123456789",
-  symbol: "~!@#$%^&*()-=_+[]\{}|;':,./<>?",
+  symbol: "~!@#$%^&*()-=_+[]\\{}|;':,./\"<>?",
 }
 /*
 1. ask user how many char
@@ -26,88 +24,91 @@ var randomPassChar = {
 */ 
 function generatePassword() {
 
-  var userPassChar = "";
+  var userNumber = getUserNum();
+  var userPassCharSet = getUserPassChar();
   
 // this is step 1 in pseudocode
-  var invalidInput = true;
 
-  while (invalidInput) {
-
-    userNum = prompt("how many char?");
-      // console.log(UserNum);
-
-    if (isNaN(userNum) || userNum === null) {
-      return alert("Invalid input! Must put a number!");
-      invalidInput = true;  
-    }
-
-    else if (userNum < 8 || userNum > 128) {
-      return alert("Must select a number between 8 to 128!");
-      invalidInput = true;
-    }
-
-    else if (userNum >=8 && userNum <=128) {
-      invalidInput = false;     
-    }
-
-    var confirmCharUpper = confirm("Would you like to include upper case letters? Click OK to confirm.");
-    var confirmCharLower = confirm("Would you like to include lower case letters? Click OK to confirm.");
-    var confirmCharNums = confirm("Would you like to include numbers? Click OK to confirm.");
-    var confirmCharSym = confirm("Would you like to include symbols? Click OK to confirm.");
   
-      if (confirmCharUpper === true) {
-        userPassChar += randomPassChar.upper;
-        console.log(userPassChar);
-      }   
-      if (confirmCharLower === true) {
-        userPassChar += randomPassChar.lower;
-        console.log(userPassChar);
-      }
-      if (confirmCharNums === true) {
-        userPassChar += randomPassChar.nums;
-        console.log(userPassChar);
-      }
-       
-      if (confirmCharSym === true) {
-        userPassChar += randomPassChar.symbol;
-        console.log(userPassChar);
-      }
-      else if (confirmCharUpper === false && confirmCharLower === false && confirmCharNums === false && confirmCharSym === false) {
-        return alert("Must select at least one character type!");
-      }    
-      
-  }
+   
+ 
+  
   // write step 2
   // write step 3
 
   var randomPass = "";
   
-  for(var i = 0; i < userNum; i++) {
-    var j = Math.floor(Math.random()*userPassChar.length);
-    randomPass += userPassChar.charAt(j);
+  for(var i = 0; i < userNumber; i++) {
+    var j = Math.floor(Math.random()*userPassCharSet.length);
+    randomPass += userPassCharSet.charAt(j);
     console.log (randomPass); 
   }
   return randomPass;
 }
 
-var pass = {
+function getUserNum() {
+  var userNum;
+  var invalidNumber = true;
 
-  choices : function () {
-    confirm("would you like to include upper case letters? click ok to confirm.");
-    if (x == true) {
-      randomPassChar.upper = randomPassChar.upper;
-      console.log(randomPassChar.upper);
+  while (invalidNumber) {
+
+    userNum = prompt("How many characters do you want for your password?");
+      // console.log(UserNum);
+
+    if (isNaN(userNum) || userNum === null) {
+       alert("Invalid input! Must put a number!");
+      invalidNumber = true;  
     }
 
+    else if (userNum < 8 || userNum > 128) {
+      alert("Must select a number between 8 to 128!");
+      invalidNumber = true;
+    }
 
-    confirm("would you like to include lower case letters? click ok to confirm.");
-    confirm("would you like to include numbers? click ok to confirm.");
-    confirm("would you like to include special characters? click ok to confirm.");
-  },
-  need : function () {
-    alert ("must select at least one character type")
+    else if (userNum >=8 && userNum <=128) {
+      invalidNumber = false;     
+    }
+  }
+  return userNum;
+}
+
+function getUserPassChar() {
+
+  var userPassChar = "";
+  var validChar = true;
+   
+  do {
     
-  },
+    var confirmCharUpper = confirm("Would you like to include upper case letters? Click OK to confirm.");
+    var confirmCharLower = confirm("Would you like to include lower case letters? Click OK to confirm.");
+    var confirmCharNums = confirm("Would you like to include numbers? Click OK to confirm.");
+    var confirmCharSym = confirm("Would you like to include symbols? Click OK to confirm.");
+
+    if (confirmCharUpper) {
+      userPassChar += randomPassChar.upper;
+    }   
+    if (confirmCharLower) {
+      userPassChar += randomPassChar.lower;
+      console.log(userPassChar);
+    }
+    if (confirmCharNums) {
+      userPassChar += randomPassChar.nums;
+      console.log(userPassChar);
+    }
+     
+    if (confirmCharSym) {
+      userPassChar += randomPassChar.symbol;
+      console.log(userPassChar);
+    }
+
+    if (confirmCharUpper === false && confirmCharLower === false && confirmCharNums === false && confirmCharSym === false) {
+      alert("Must select at least one character type!");
+      validChar = false;
+    } else {
+      validChar = true;
+    } 
+  } while (!validChar);
+  return userPassChar;
 }
 
 // Write password to the #password input
