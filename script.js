@@ -11,7 +11,6 @@ var randomPassChar = {
   nums: "0123456789",
   symbol: "~!@#$%^&*()-=_+[]\{}|;':,./<>?",
 }
-// other option test
 /*
 1. ask user how many char
     - should be 8 to 128
@@ -31,29 +30,24 @@ function generatePassword() {
   
 // this is step 1 in pseudocode
   var invalidInput = true;
+
   while (invalidInput) {
 
     userNum = prompt("how many char?");
-    ncjkg
-      // console.log(UserNum)
-  
-    if (userNum < 8 || userNum > 128) {
-      return alert("Must be between numbers 8 to 128!");
-      invalidInput = true;
-    }
+      // console.log(UserNum);
 
-    else if (isNaN(userNum)) {
+    if (isNaN(userNum) || userNum === null) {
       return alert("Invalid input! Must put a number!");
+      invalidInput = true;  
+    }
+
+    else if (userNum < 8 || userNum > 128) {
+      return alert("Must select a number between 8 to 128!");
       invalidInput = true;
     }
-    // else if (pass.choices) {
-    //   pass.choices.need();
-    // }
 
-    if (userNum >=8 && userNum <=128) {
-      invalidInput = false
-
-      // pass.choices;
+    else if (userNum >=8 && userNum <=128) {
+      invalidInput = false;     
     }
 
     var confirmCharUpper = confirm("Would you like to include upper case letters? Click OK to confirm.");
@@ -78,7 +72,7 @@ function generatePassword() {
         userPassChar += randomPassChar.symbol;
         console.log(userPassChar);
       }
-      else {
+      else if (confirmCharUpper === false && confirmCharLower === false && confirmCharNums === false && confirmCharSym === false) {
         return alert("Must select at least one character type!");
       }    
       
@@ -86,18 +80,14 @@ function generatePassword() {
   // write step 2
   // write step 3
 
-  var passLength = 0;
+  var randomPass = "";
   
-  for(var i = 0; i < userPassChar.length; i++) {
-  var i = Math.floor(Math.random()*userPassChar.length);
-
-  // var randomPassChar = "abcdefghijklmnopqrstuvwxyz!@#$%^&*()-+<>ABCDEFGHIJKLMNOP1234567890";
-  // randomPass = "";
-  // for (var i = 0; i < randomPassChar.length; i++) {
-  //     var i = Math.floor(Math.random()*randomPassChar.length);
-  //     randomPass += randomPassChar.charAt(i);
-  // }
-  
+  for(var i = 0; i < userNum; i++) {
+    var j = Math.floor(Math.random()*userPassChar.length);
+    randomPass += userPassChar.charAt(j);
+    // console.log (randomPass);
+    
+  }
 }
 
 var pass = {
