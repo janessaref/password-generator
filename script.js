@@ -11,11 +11,6 @@ var randomPassChar = {
   nums: "0123456789",
   symbol: "~!@#$%^&*()-=_+[]\{}|;':,./<>?",
 }
-for (var i = 0; i < length; i++) {
-
-  // var i = Math.floor(Math.random()*randomPass.length);
-       
-}
 // other option test
 /*
 1. ask user how many char
@@ -39,7 +34,7 @@ function generatePassword() {
   while (invalidInput) {
 
     userNum = prompt("how many char?");
-    ncjk
+    ncjkg
       // console.log(UserNum)
   
     if (userNum < 8 || userNum > 128) {
@@ -85,12 +80,16 @@ function generatePassword() {
       }
       else {
         return alert("Must select at least one character type!");
-      }
-    
-    
+      }    
+      
   }
   // write step 2
   // write step 3
+
+  var passLength = 0;
+  
+  for(var i = 0; i < userPassChar.length; i++) {
+  var i = Math.floor(Math.random()*userPassChar.length);
 
   // var randomPassChar = "abcdefghijklmnopqrstuvwxyz!@#$%^&*()-+<>ABCDEFGHIJKLMNOP1234567890";
   // randomPass = "";
@@ -98,7 +97,6 @@ function generatePassword() {
   //     var i = Math.floor(Math.random()*randomPassChar.length);
   //     randomPass += randomPassChar.charAt(i);
   // }
-  // return "hello";
   
 }
 
@@ -129,7 +127,7 @@ function writePassword() {
 
   passwordText.value = password;
 
-  
+
 
     
 
@@ -137,25 +135,3 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
-
-// Loop
-// while (userNum !== /^[0-9]+$/) {
-
-//   userNum = prompt("how many char?");
-  
-
-//   if (userNum < 8) {
-//     alert("Must be 8 characters long!");
-//   }
-//   else if (userNum > 128) {
-//     alert("Must be less than 128 characters");
-//   }
-//   else if (userNum >= 8 <= 128) {
-//     pass.choices();
-//   }
-//   else if (pass.choices === false) {
-//     pass.choices.need();
-//   }
-
-// }
