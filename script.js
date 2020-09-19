@@ -3,11 +3,12 @@ var generateBtn = document.querySelector("#generate");
 var userNum;
 
 
+
 // Random Password
 var randomPassChar = {
   lower: "abcdefghijklmnopqrstuvwxyz",
   upper: "ABCDEFGHIJKLMNOPQRSTUVQXYZ",
-  num: "0123456789",
+  nums: "0123456789",
   symbol: "~!@#$%^&*()-=_+[]\{}|;':,./<>?",
 }
 for (var i = 0; i < length; i++) {
@@ -32,41 +33,61 @@ for (var i = 0; i < length; i++) {
 function generatePassword() {
 
   var userPassChar = "";
-    console.log(userPassChar);
+  
 // this is step 1 in pseudocode
   var invalidInput = true;
   while (invalidInput) {
 
     userNum = prompt("how many char?");
+    ncjk
+      // console.log(UserNum)
   
     if (userNum < 8 || userNum > 128) {
-      alert("Must be between numbers 8 to 128!");
+      return alert("Must be between numbers 8 to 128!");
       invalidInput = true;
     }
 
     else if (isNaN(userNum)) {
-      alert("Invalid input! Must put a number!");
+      return alert("Invalid input! Must put a number!");
       invalidInput = true;
     }
     // else if (pass.choices) {
     //   pass.choices.need();
     // }
 
-    else {
-      invalidInput = false;
-      confirm("Would you like to include upper case letters? Click OK to confirm.");
-      if (invalidInput = true) {
-        userPassChar = userPassChar + randomPassChar.upper;
-        // console.log(userPassChar);
-      
-      }
-      else {
-        invalidInput = false;
-      }
-      // return userPassChar
-    
+    if (userNum >=8 && userNum <=128) {
+      invalidInput = false
+
+      // pass.choices;
     }
 
+    var confirmCharUpper = confirm("Would you like to include upper case letters? Click OK to confirm.");
+    var confirmCharLower = confirm("Would you like to include lower case letters? Click OK to confirm.");
+    var confirmCharNums = confirm("Would you like to include numbers? Click OK to confirm.");
+    var confirmCharSym = confirm("Would you like to include symbols? Click OK to confirm.");
+  
+      if (confirmCharUpper === true) {
+        userPassChar += randomPassChar.upper;
+        console.log(userPassChar);
+      }   
+      if (confirmCharLower === true) {
+        userPassChar += randomPassChar.lower;
+        console.log(userPassChar);
+      }
+      if (confirmCharNums === true) {
+        userPassChar += randomPassChar.nums;
+        console.log(userPassChar);
+      }
+       
+      if (confirmCharSym === true) {
+        userPassChar += randomPassChar.symbol;
+        console.log(userPassChar);
+      }
+      else {
+        return alert("Must select at least one character type!");
+      }
+    
+    
   }
   // write step 2
   // write step 3
@@ -83,14 +104,13 @@ function generatePassword() {
 
 var pass = {
 
-  // less : function () {
-  //   alert("Must be 8 characters long!");
-  // },
-  // more : function () {
-  //   alert("Must be less than 128 characters");
-  // },
   choices : function () {
     confirm("would you like to include upper case letters? click ok to confirm.");
+    if (x == true) {
+      randomPassChar.upper = randomPassChar.upper;
+      console.log(randomPassChar.upper);
+    }
+
 
     confirm("would you like to include lower case letters? click ok to confirm.");
     confirm("would you like to include numbers? click ok to confirm.");
