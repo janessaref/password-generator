@@ -32,25 +32,39 @@ for (var i = 0; i < length; i++) {
 function generatePassword() {
 
   var userPassChar = "";
+    console.log(userPassChar);
 // this is step 1 in pseudocode
   var invalidInput = true;
   while (invalidInput) {
 
     userNum = prompt("how many char?");
-    
   
-    if (userNum < 8) {
-      alert("Must be 8 characters long!");
+    if (userNum < 8 || userNum > 128) {
+      alert("Must be between numbers 8 to 128!");
       invalidInput = true;
     }
-    else if (userNum > 128) {
-      alert("Must be less than 128 characters");
+
+    else if (isNaN(userNum)) {
+      alert("Invalid input! Must put a number!");
+      invalidInput = true;
     }
-    else if (userNum >= 8 <= 128) {
-      pass.choices();
-    }
-    else if (pass.choices === false) {
-      pass.choices.need();
+    // else if (pass.choices) {
+    //   pass.choices.need();
+    // }
+
+    else {
+      invalidInput = false;
+      confirm("Would you like to include upper case letters? Click OK to confirm.");
+      if (invalidInput = true) {
+        userPassChar = userPassChar + randomPassChar.upper;
+        // console.log(userPassChar);
+      
+      }
+      else {
+        invalidInput = false;
+      }
+      // return userPassChar
+    
     }
 
   }
@@ -95,6 +109,8 @@ function writePassword() {
 
   passwordText.value = password;
 
+  
+
     
 
 }
@@ -104,22 +120,22 @@ generateBtn.addEventListener("click", writePassword);
 
 
 // Loop
-while (userNum !== /^[0-9]+$/) {
+// while (userNum !== /^[0-9]+$/) {
 
-  userNum = prompt("how many char?");
+//   userNum = prompt("how many char?");
   
 
-  if (userNum < 8) {
-    alert("Must be 8 characters long!");
-  }
-  else if (userNum > 128) {
-    alert("Must be less than 128 characters");
-  }
-  else if (userNum >= 8 <= 128) {
-    pass.choices();
-  }
-  else if (pass.choices === false) {
-    pass.choices.need();
-  }
+//   if (userNum < 8) {
+//     alert("Must be 8 characters long!");
+//   }
+//   else if (userNum > 128) {
+//     alert("Must be less than 128 characters");
+//   }
+//   else if (userNum >= 8 <= 128) {
+//     pass.choices();
+//   }
+//   else if (pass.choices === false) {
+//     pass.choices.need();
+//   }
 
-}
+// }
