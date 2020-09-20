@@ -9,6 +9,7 @@ var randomPassChar = {
   nums: "012345678909123456789",
   symbol: "~!@#$%^&*()-=_+[]\\{}|;':,./\"<>?",
 }
+
 /*
 GUIDE FOR RANDOM PASSWORD GENERATOR
   1. ask user how many characters they want for their password
@@ -17,25 +18,27 @@ GUIDE FOR RANDOM PASSWORD GENERATOR
     - store user's choice in variable
     
   2. ask user what type of characters they want
-     - upper, lower, symbols, and/or numbers
+     - upper, lower, symbols, and/or numbers (one of each must be present)
      - if none were selected, loop the questions
 
   3. generate password with user's selection (number of preferred characters and types of characters)
     - use the for loop to generate the random password with the user's number input variable and the user's selected character types variable
+    - be sure that all character types are present 
+    - shuffle the newly generated password
 */ 
+
 
 // Generates a random password with user's number input and password character set
 function generatePassword() {
 
-// Obtain the user's selected number of characters
-
+  // Obtain the user's selected number of characters
   var userNum;
   var invalidNumber = true;
   
-  // loops the series of questions until user input is a valid number between 8 to 128 characters
+  // Loops the series of questions until user input is a valid number between 8 to 128 characters
   while (invalidNumber) {
 
-    userNum = prompt("How many characters do you want for your password?");
+    userNum = prompt("How many characters would you like for your password?");
 
     if (isNaN(userNum) || userNum === null) {
       alert("Invalid input! Must put a number!");
@@ -43,7 +46,7 @@ function generatePassword() {
     }
 
     else if (userNum < 8 || userNum > 128) {
-      alert("Must select a number between 8 to 128!");
+      alert("Password length must be a number between 8 to 128!");
       invalidNumber = true;
     }
 
@@ -52,23 +55,24 @@ function generatePassword() {
     }
   }
 
-// Obtain the user's selected types of characters
+  // Obtain the user's selected character types
   var userPassChar = "";
   var validChar = true;
 
+  // Ensures that each character type is present in the password
   var upperStr = "";
   var lowerStr = "";
   var numberStr = "";
   var symbolStr = "";
    
-  // loops series of questions until user select's at least one character type
+  // Loops a series of questions until user selects at least one character type
   do {
-  var confirmCharUpper = confirm("Would you like to include upper case letters? Click OK to confirm.");
-  var confirmCharLower = confirm("Would you like to include lower case letters? Click OK to confirm.");
-  var confirmCharNums = confirm("Would you like to include numbers? Click OK to confirm.");
-  var confirmCharSym = confirm("Would you like to include symbols? Click OK to confirm.");
+    var confirmCharUpper = confirm("Would you like to include upper case letters? Click OK to confirm.");
+    var confirmCharLower = confirm("Would you like to include lower case letters? Click OK to confirm.");
+    var confirmCharNums = confirm("Would you like to include numbers? Click OK to confirm.");
+    var confirmCharSym = confirm("Would you like to include symbols? Click OK to confirm.");
 
-  if (confirmCharUpper) {
+    if (confirmCharUpper) {
       userPassChar += randomPassChar.upper;
       upperStr += randomPassChar.upper;
     }   
@@ -95,63 +99,49 @@ function generatePassword() {
       validChar = true;
     } 
   } while (!validChar);
-      // return userPassChar;
-// }
-var oneCharacterEach= ""
 
 
+  // Variable that will collect one character per type
+  var oneCharacterEach= ""
 
-  for(var l = 0; l < 1; l++) {
+  // Randomly picks up one character per type
+  for(var i = 0; i < 1; i++) {
   var oneUpper = Math.floor(Math.random()*upperStr.length);
    oneCharacterEach += upperStr.charAt(oneUpper);
-    console.log (oneCharacterEach); 
-}
-  for(var m = 0; m < 1; m++) {
+  }
+  for(var j = 0; j < 1; j++) {
   var oneLower = Math.floor(Math.random()*lowerStr.length);
    oneCharacterEach += lowerStr.charAt(oneLower);
-    console.log (oneCharacterEach); 
-}
-  for(var n = 0; n < 1; n++) {
+  }
+  for(var k = 0; k < 1; k++) {
   var oneNumber = Math.floor(Math.random()*numberStr.length);
    oneCharacterEach += numberStr.charAt(oneNumber);
-    console.log (oneCharacterEach); 
-}
-  for(var o = 0; o < 1; o++) {
+  }
+  for(var l = 0; l < 1; l++) {
   var oneSymbol = Math.floor(Math.random()*symbolStr.length);
    oneCharacterEach += symbolStr.charAt(oneSymbol);
-    console.log (oneCharacterEach); 
-}
-
-var eachCharacterArray = oneCharacterEach
-console.log (eachCharacterArray)
-
-// eachCharacterArray.split("");
-var x = (userNum - eachCharacterArray.split("").length);
-  console.log (x);
-
-
-var randomPass = "";
-  
-  // for loop that randomizes and generates user's inputs
-  for(var i = 0; i < x; i++) {
-    var j = Math.floor(Math.random()*userPassChar.length);
-    randomPass += (userPassChar.charAt(j));
-    var newRandomPassword = randomPass.toString();
-    var newCharSet = oneCharacterEach.toString();
-    newRandomPassword += oneCharacterEach;
-  
-    console.log (newRandomPassword)
-    // newRandomPassword = newRandomPassword + newCharSet
-    // console.log(oneCharacterEach)
-    // randomPass += oneCharacterEach
-
-  
   }
+
+  // Converts the string into an array to modify user number 
+  var eachCharacterArray = oneCharacterEach;  
+  var newUserNum = (userNum - eachCharacterArray.split("").length);
+  
+  // For loop that randomizes and generates user's inputs and includes the guaranteed character type for each
+  var randomPassword = "";
+
+  for(var m = 0; m < newUserNum; m++) {
+    var n = Math.floor(Math.random()*userPassChar.length);
+    randomPassword += (userPassChar.charAt(n));
+    var newRandomPassword = randomPassword.toString();
+    newRandomPassword += oneCharacterEach; 
+  }
+
+  // Shuffles the newly generated password to change order
+  // Assures that the two added strings will now be randomized again
+  var newRandomPassword = newRandomPassword.split('').sort(function(){return 0.5-Math.random()}).join('');
+
+  // Pushes the final password to display on the screen
   return newRandomPassword;
-
-
-
-
 }
 
 // Write password to the #password input
