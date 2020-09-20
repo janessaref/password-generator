@@ -13,11 +13,15 @@ This project posed as a challenge for me as a new coder and it laid the foundati
 * [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
 * [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
-## Images of Project
+## GIF of Project
 
-![]()
-![]()
-![]()
+![gif](Assets/passwordgenerator.gif)
+
+
+## Image of Project
+
+![image](Assets/passimg.png)
+
 
 ## Code Snippet
 
