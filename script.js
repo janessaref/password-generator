@@ -31,15 +31,15 @@ function generatePassword() {
   // var userPassCharSet = userPassChar;
   // getUserPassChar();
 
-  var randomPass = "";
+  // var randomPass = "";
   
-  // for loop that randomizes and generates user's inputs
-  // for(var i = 0; i < userNumber; i++) {
-  //   var j = Math.floor(Math.random()*userPassCharSet.length);
-  //   randomPass += userPassCharSet.charAt(j);
-  //   console.log (randomPass); 
-  // }
-  // return randomPass;
+  // // for loop that randomizes and generates user's inputs
+  // // for(var i = 0; i < userNumber; i++) {
+  // //   var j = Math.floor(Math.random()*userPassCharSet.length);
+  // //   randomPass += userPassCharSet.charAt(j);
+  // //   console.log (randomPass); 
+  // // }
+  // // return randomPass;
 
 
 
@@ -122,6 +122,8 @@ function generatePassword() {
 // }
 var oneCharacterEach= ""
 
+
+
   for(var l = 0; l < 1; l++) {
   var oneUpper = Math.floor(Math.random()*upperStr.length);
    oneCharacterEach += upperStr.charAt(oneUpper);
@@ -142,6 +144,36 @@ var oneCharacterEach= ""
    oneCharacterEach += symbolStr.charAt(oneSymbol);
     console.log (oneCharacterEach); 
 }
+
+var eachCharacterArray = oneCharacterEach
+console.log (eachCharacterArray)
+
+// eachCharacterArray.split("");
+var x = (userNum - eachCharacterArray.split("").length);
+  console.log (x);
+
+
+var randomPass = "";
+  
+  // for loop that randomizes and generates user's inputs
+  for(var i = 0; i < x; i++) {
+    var j = Math.floor(Math.random()*userPassChar.length);
+    randomPass += (userPassChar.charAt(j));
+    var newRandomPassword = randomPass.toString();
+    var newCharSet = oneCharacterEach.toString();
+    newRandomPassword += oneCharacterEach;
+  
+    console.log (newRandomPassword)
+    // newRandomPassword = newRandomPassword + newCharSet
+    // console.log(oneCharacterEach)
+    // randomPass += oneCharacterEach
+
+  
+  }
+  return newRandomPassword;
+
+
+
 
 }
 
