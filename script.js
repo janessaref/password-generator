@@ -68,7 +68,7 @@ function generatePassword() {
   // Loops a series of questions until user selects at least one character type
   do {
     var confirmCharUpper = confirm("Would you like to include uppercase letters? Click OK to confirm.");
-    var confirmCharLower = confirm("Would you like to include lowerccase letters? Click OK to confirm.");
+    var confirmCharLower = confirm("Would you like to include lowercase letters? Click OK to confirm.");
     var confirmCharNums = confirm("Would you like to include numbers? Click OK to confirm.");
     var confirmCharSym = confirm("Would you like to include symbols? Click OK to confirm.");
 
