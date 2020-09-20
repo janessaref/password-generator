@@ -27,28 +27,8 @@ GUIDE FOR RANDOM PASSWORD GENERATOR
 // Generates a random password with user's number input and password character set
 function generatePassword() {
 
-  // var userNumber = getUserNum();
-  // var userPassCharSet = userPassChar;
-  // getUserPassChar();
-
-  // var randomPass = "";
-  
-  // // for loop that randomizes and generates user's inputs
-  // // for(var i = 0; i < userNumber; i++) {
-  // //   var j = Math.floor(Math.random()*userPassCharSet.length);
-  // //   randomPass += userPassCharSet.charAt(j);
-  // //   console.log (randomPass); 
-  // // }
-  // // return randomPass;
-
-
-
-
-
-// }
-
 // Obtain the user's selected number of characters
-// function getUserNum() {
+
   var userNum;
   var invalidNumber = true;
   
@@ -71,13 +51,10 @@ function generatePassword() {
       invalidNumber = false;     
     }
   }
-//     return userNum;
-// }
 
 // Obtain the user's selected types of characters
-// function getUserPassChar() {
   var userPassChar = "";
-  // var validChar = true;
+  var validChar = true;
 
   var upperStr = "";
   var lowerStr = "";
@@ -85,7 +62,7 @@ function generatePassword() {
   var symbolStr = "";
    
   // loops series of questions until user select's at least one character type
-  // do {
+  do {
   var confirmCharUpper = confirm("Would you like to include upper case letters? Click OK to confirm.");
   var confirmCharLower = confirm("Would you like to include lower case letters? Click OK to confirm.");
   var confirmCharNums = confirm("Would you like to include numbers? Click OK to confirm.");
@@ -111,14 +88,14 @@ function generatePassword() {
     }
 
     if (confirmCharUpper === false && confirmCharLower === false && confirmCharNums === false && confirmCharSym === false) {
-      alert("Must select at least one character type!");
-      // validChar = false;
+      alert("Must select at least one character type! Try again!");
+      validChar = false;
     }
-//     } else {
-//       validChar = true;
-//     // } 
-//   // } while (!validChar);
-//       // return userPassChar;
+     else {
+      validChar = true;
+    } 
+  } while (!validChar);
+      // return userPassChar;
 // }
 var oneCharacterEach= ""
 
